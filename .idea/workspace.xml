@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6efe3549-55c0-41b8-9630-2eadd4ba3cc9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6efe3549-55c0-41b8-9630-2eadd4ba3cc9" name="Default" comment="" />
     <ignored path="coursera.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +26,8 @@
       <file leaf-file-name="coursera_dl.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/coursera/coursera_dl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24456522" vertical-offset="1770" max-vertical-offset="12030">
-              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.24896266" vertical-offset="2145" max-vertical-offset="12405">
+              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding>
                 <element signature="e#1607#1622#0" expanded="true" />
               </folding>
@@ -141,8 +139,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/coursera/downloaders.py" />
-        <option value="$PROJECT_DIR$/coursera/coursera_dl.py" />
         <option value="$PROJECT_DIR$/coursera/cookies.py" />
+        <option value="$PROJECT_DIR$/coursera/coursera_dl.py" />
       </list>
     </option>
   </component>
@@ -753,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/coursera/coursera_dl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24456522" vertical-offset="1770" max-vertical-offset="12030">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.24896266" vertical-offset="2145" max-vertical-offset="12405">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding>
             <element signature="e#1607#1622#0" expanded="true" />
           </folding>
