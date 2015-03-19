@@ -125,7 +125,30 @@ def grab_hidden_video_url(session, href):
     University of Washington).
     """
     try:
-        page = get_page(session, href)
+        #page = get_page(session, href)
+        headers={
+            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Encoding':'gzip, deflate, sdch',
+            'Accept-Language':'zh-CN,zh;q=0.8',
+            'Connection':'keep-alive',
+            'Cookie': 'network-priority-support=%7B%22error%22%3A%22user_not_in_network%22%7D; csrf_token=GL11JHpnJqh4VfP0PH8p; __204u=9997994733-1418049002166; __204r=http%3A%2F%2Fwww.mooc.cn%2Fcourse%2F1574.html; data.coursera.wysihtml5default.mode.forums=rich; ab-experiments-user=upcoming_window_leading2%2Cupcoming_window_trailing2%2Cnew_records_page_eocs_banner%2Cin_class_qqs%2Cin_class_qqs_button; lecture_player=flash; ab-experiments-session=specializations_landing_swap%2Csignup_title_copy%2Csignup_description_copy%2Cspecializations_cover_banner%2Chomepage_user_count%2Csigtrack_course_page_button; serve_netease_971319=1; maestro_login_flag=1; CAUTH=Leoi3sKv37KCcMwiTs8Ds9ZNJlfZk3IMowNLIIZTNLwA1B_g_hiIiQrwR-3tfLsUMpEAUbwrjQy_RIr27JkhCQ.gck5LY6seLcXHR8uihiiBA.bGM_VkvIciI3mMHEdsEa1jEhu7vGdX7Nc52vj3k5MksFRcQZNmnQCKUBL5zGk_gYi6SjMNXYjqFbs5FRonv_VZyRxubh4MK4wokxgQKJWEA3giCe4xn13zXpxuvlP3pIvBF1GIMgTDoSIa76zM5u7lMpSYS5g_71uO5mT74mVZc; __utma=158142248.1741834991.1418049006.1418910586.1418913751.15; __utmc=158142248; __utmz=158142248.1418657195.8.2.utmcsr=coursera.org|utmccn=(referral)|utmcmd=referral|utmcct=/',
+            'Referer': 'https://accounts.coursera.org/signin',
+            'Host':'class.coursera.org',
+            'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) '
+                         'Chrome/39.0.2171.95 Safari/537.36',
+
+        }
+        r=session.get(href,headers=headers)
+        #resdict=r.__dict__.get('raw').headers.__dict__
+        #logging.debug('respones-----%s'%resdict)
+        resdict=r.__dict__.get('request').__dict__.get('url')
+        logging.debug('real mp4 url-----%s'%resdict)
+        return resdict
+        '''
+        for i in resdict:
+
+            logging.debug('%s-----%s'%(i,resdict.get(i)))
+            '''
     except requests.exceptions.HTTPError:
         return None
 
@@ -225,6 +248,8 @@ def parse_syllabus(session, page, reverse=False, intact_fnames=False):
                 fmt = get_anchor_format(href)
                 logging.debug('    %s %s', fmt, href)
                 if fmt:
+                    if 'mp4'==fmt:
+                        href=grab_hidden_video_url(session,href)
                     lecture[fmt] = lecture.get(fmt, [])
                     lecture[fmt].append((href, title))
                     continue
