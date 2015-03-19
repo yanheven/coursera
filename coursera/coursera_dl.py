@@ -130,7 +130,7 @@ def grab_hidden_video_url(session, href):
         return None
 
     soup = BeautifulSoup(page)
-    l = soup.find('source', attrs={'type': 'video/mp4'})
+    l = soup.find('Location', attrs={'type': 'video/mp4'})
     if l is not None:
         return l['src']
     else:

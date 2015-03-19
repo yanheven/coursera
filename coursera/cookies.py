@@ -91,9 +91,23 @@ def login(session, class_name, username, password):
 
     # Now make a call to the authenticator url.
     headers = {
-        'Cookie': 'csrftoken=' + csrftoken,
+        'Cookie': '__204u=9997994733-1418049002166; __204r=http%3A%2F%2Fwww.mooc.cn%2Fcourse%2F1574.html; '
+                  'ab-experiments-user=upcoming_window_leading2%2Cupcoming_window_trailing2%2Cnew_records_'
+                  'page_eocs_banner%2Cin_class_qqs%2Cin_class_qqs_button; ab-experiments-session=specializations_'
+                  'landing_swap%2Csignup_title_copy%2Csignup_description_copy%2Cspecializations_cover_banner%2Chomepage'
+                  '_user_count%2Csigtrack_course_page_button; __400v=6578dde9-10aa-4415-bf72-9c00683340c7; __utmt=1; '
+                  '__400vt=1418914985294; CAUTH=; maestro_login_flag=; maestro_login=; __utma=158142248.1741834991.'
+                  '1418049006.1418910586.1418913751.15; __utmb=158142248.47.10.1418913751; __utmc=158142248; '
+                  '__utmz=158142248.1418657195.8.2.utmcsr=coursera.org|utmccn=(referral)|utmcmd=referral|utmcct=/; '
+                  'csrftoken=TjrgmhXgWEU46RFK8sZwgiS9; csrf2_token_l6pgZCrT=CedPXBnxoHZrv1TFp5YhiT0H',
         'Referer': 'https://accounts.coursera.org/signin',
-        'X-CSRFToken': csrftoken,
+        'X-CSRFToken': 'TjrgmhXgWEU46RFK8sZwgiS9',
+        'Host':'accounts.coursera.org',
+        'Origin':'https://accounts.coursera.org',
+        'Referer':'https://accounts.coursera.org/signin?post_redirect=https%3A%2F%2Fwww.coursera.org%2Faccount%2Flogout',
+        'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) '
+                     'Chrome/39.0.2171.95 Safari/537.36',
+
     }
 
     data = {
@@ -105,7 +119,9 @@ def login(session, class_name, username, password):
     r = session.post(AUTH_URL, data=data,
                      headers=headers, allow_redirects=False)
     try:
+        logging.debug('login page%s'%r)
         r.raise_for_status()
+
     except requests.exceptions.HTTPError:
         raise AuthenticationFailed('Cannot login on accounts.coursera.org.')
 
@@ -268,6 +284,7 @@ def get_cookies_from_cache(username):
     user.
     """
     path = get_cookies_cache_path(username)
+    logging.debug('cookie path:%s'%path)
     cj = requests.cookies.RequestsCookieJar()
     try:
         cached_cj = get_cookie_jar(path)
